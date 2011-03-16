@@ -5,18 +5,18 @@ echo 'Setting up dotfiles...'
 if [ -x /bin/tar ]; then
     WORK_DIR=/tmp/__dotfiles
     WORK_FILE=/tmp/__dotfiles.tar.gz
-    curl -L https://github.com/serialx/dotfiles/tarball/master > $WORK_FILE
+    curl -L https://github.com/pipoket/dotfiles/tarball/master > $WORK_FILE
     mkdir -p $WORK_DIR
     tar -zxf $WORK_FILE --directory $WORK_DIR
-    mv $WORK_DIR/serialx-dotfiles*/* $WORK_DIR
+    mv $WORK_DIR/pipoket-dotfiles*/* $WORK_DIR
 
-    read -p 'Install serialx git/hg config? [y/n] ' INSTALL_VCS
+    read -p 'Install pipoket git/hg config? [y/n] ' INSTALL_VCS
     if [ "$INSTALL_VCS" = "y" ]; then
         cp $WORK_DIR/gitconfig ~/.gitconfig
         cp $WORK_DIR/hgrc ~/.hgrc
     fi
 
-    read -p 'Install serialx ssh public key for login? [y/n] ' INSTALL_SSH_KEY
+    read -p 'Install pipoket ssh public key for login? [y/n] ' INSTALL_SSH_KEY
     if [ "$INSTALL_SSH_KEY" = "y" ]; then
         cp -r $WORK_DIR/ssh ~/.ssh
         chmod 700 ~/.ssh
@@ -29,10 +29,10 @@ if [ -x /bin/tar ]; then
     rm -r ~/.vim
     cp -r $WORK_DIR/vim ~/.vim
 
-    echo 'Installing .bashrc_serialx'
-    cp $WORK_DIR/bashrc ~/.bashrc_serialx
-    sed -i'.bak' '/^\. ~\/\.bashrc_serialx$/d' ~/.bashrc
-    echo ". ~/.bashrc_serialx" >> ~/.bashrc
+    echo 'Installing .bashrc_pipoket'
+    cp $WORK_DIR/bashrc ~/.bashrc_pipoket
+    sed -i'.bak' '/^\. ~\/\.bashrc_pipoket$/d' ~/.bashrc
+    echo ". ~/.bashrc_pipoket" >> ~/.bashrc
 
     echo 'Setting up woof.py'
     mkdir -p ~/bin
