@@ -41,7 +41,6 @@ if &term =~ "xterm" || &term =~ "screen-bce" || &term =~ "screen-256color"
 	"set t_Co=8
     set t_Co=256
     colorscheme desert256
-    colorscheme molokai
 	if has("terminfo")
 		let &t_Sf = "\<Esc>[3%p1%dm"
 		let &t_Sb = "\<Esc>[4%p1%dm"
