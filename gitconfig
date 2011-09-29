@@ -7,3 +7,4 @@
 	st = status
 	co = checkout
 	cia = commit -a
+	glog = log --graph --all --color --oneline --decorate
